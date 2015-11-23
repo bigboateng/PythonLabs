@@ -15,7 +15,7 @@ def f(x):
     return x ** 2 - 2
 
 
-def newton(f,x,feps,maxit):
+def newton(f, x, feps, maxit):
     """
 
     :param f:
@@ -24,12 +24,12 @@ def newton(f,x,feps,maxit):
     :param maxit:
     :return: newton rhapson approximated at x
     """
-    NumIterations = 0
+    num_iterations = 0
     while abs(f(x)) > feps:
         x -= f(x)/derivative(f, x)
-        NumIterations += 1
-        if(NumIterations > maxit):
-            raise RuntimeError("Failed after {} iterations".format(NumIterations))
+        num_iterations += 1
+        if num_iterations > maxit:
+            raise RuntimeError("Failed after {} iterations".format(num_iterations))
     return x
 
 
@@ -48,7 +48,3 @@ def is_palindrome(s):
         return is_palindrome(s[1:-1])
     else:
         return False
-
-
-if __name__ == '__main__':
-   print(is_palindrome("rotator"))
