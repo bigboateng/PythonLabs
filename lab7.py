@@ -1,6 +1,3 @@
-__author__ = 'Boateng'
-
-
 def derivative(f, x, eps=1e-6):
     """
 
@@ -9,10 +6,6 @@ def derivative(f, x, eps=1e-6):
     :return:
     """
     return (f(x + (eps/2)) - f(x - (eps/2)))/eps
-
-
-def f(x):
-    return x ** 2 - 2
 
 
 def newton(f, x, feps, maxit):
@@ -29,7 +22,7 @@ def newton(f, x, feps, maxit):
         x -= f(x)/derivative(f, x)
         num_iterations += 1
         if num_iterations > maxit:
-            raise RuntimeError("Failed after {} iterations".format(num_iterations))
+            raise RuntimeError("Failed after {} iterations".format(maxit))
     return x
 
 
