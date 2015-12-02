@@ -89,6 +89,26 @@ def encode(code, msg):
     return "".join(msg)
 
 
+def reverse_dic(d):
+    """
+    :param d:
+    :return:
+    """
+    return {v : k for k, v in d.items()}
+
+
+def decode(code, encoded_msg):
+    """
+    returns the decoded version of encoded msg using the dict key
+    """
+    code = reverse_dic(code)
+    encoded_msg = list(encoded_msg)
+    for i in range(len(encoded_msg)):
+        if encoded_msg[i] in code:
+            encoded_msg[i] = code[encoded_msg[i]]
+    return "".join(encoded_msg)
+
+
 
 
 # if this file is executed on it's own, check codes given
