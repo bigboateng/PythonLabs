@@ -15,7 +15,7 @@ def sum_f(f, xs):
     :param f:
     :param xs:
     :return: sum of f(i) for i in xs
-    """
+      """
     return sum([f(i) for i in xs])
 
 
