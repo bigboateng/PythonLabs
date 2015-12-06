@@ -75,13 +75,14 @@ def trapez(f, a, b, n):
     """
     returns the trapezoidal method evaluated on f(x) at a,b
     """
+    a, b = float(a), float(b)
     h = (b - a)/n
-    summation = (h/2)*(f(a)+f(b)+2*sum([f(a + i*h) for i in range(1, n)]))
+    summation = (h/2)*(f(a)+f(b)+2*sum([f(a + i*h) for i in range(0, n)]))
     return summation
 
 
 def encode(code, msg):
-    """ ecrypts a message using the dictionary code provided"""
+    """ :returns ecrypts a message using the dictionary code provided"""
     msg = list(msg)
     for i in range(len(msg)):
         if msg[i] in code:
@@ -94,7 +95,7 @@ def reverse_dic(d):
     :param d:
     :return:
     """
-    return {v : k for k, v in d.items()}
+    return {v: k for k, v in d.items()}
 
 
 def decode(code, encoded_msg):
@@ -107,8 +108,6 @@ def decode(code, encoded_msg):
         if encoded_msg[i] in code:
             encoded_msg[i] = code[encoded_msg[i]]
     return "".join(encoded_msg)
-
-
 
 
 # if this file is executed on it's own, check codes given
