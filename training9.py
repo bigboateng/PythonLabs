@@ -1,3 +1,4 @@
+from __future__ import division
 """Some support functions"""
 
 
@@ -73,12 +74,16 @@ secretmessage = \
 
 def trapez(f, a, b, n):
     """
-    returns the trapezoidal method evaluated on f(x) at a,b
+
+    :param f:
+    :param a:
+    :param b:
+    :param n:
+    :return: composite trapezoidal integration rule applied on f between limits a and b
     """
-    a, b = float(a), float(b)
-    h = (b - a)/n
-    summation = (h/2)*(f(a)+f(b)+2*sum([f(a + i*h) for i in range(0, n)]))
-    return summation
+    h = (b - a)//n
+    big_summation = sum([f(a + i*h) for i in range(1, n)])
+    return (h//2)*(f(a) + f(b) + 2*big_summation)
 
 
 def encode(code, msg):
