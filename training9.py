@@ -81,9 +81,10 @@ def trapez(f, a, b, n):
     :param n:
     :return: composite trapezoidal integration rule applied on f between limits a and b
     """
-    h = (b - a)//n
+    a, b = float(a), float(b)
+    h = (b - a)/n
     big_summation = sum([f(a + i*h) for i in range(1, n)])
-    return (h//2)*(f(a) + f(b) + 2*big_summation)
+    return (h/2)*(f(a) + f(b) + 2*big_summation)
 
 
 def encode(code, msg):
@@ -114,7 +115,15 @@ def decode(code, encoded_msg):
             encoded_msg[i] = code[encoded_msg[i]]
     return "".join(encoded_msg)
 
+def const(x):
+    return 1.
 
 # if this file is executed on it's own, check codes given
 if __name__ == "__main__":
-    test_codes()
+#     f1 = lambda x:x
+      f2 = lambda x:x*x
+#     print(trapez(f2, 0, 1, 100))
+#     print(trapez(f2, 0, 1, 1000))
+      print(trapez(f2, -1, 2, 5))
+#     test_codes()
+#     print(range(1,1))
