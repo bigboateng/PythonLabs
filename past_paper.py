@@ -76,7 +76,24 @@ def change_unit(d, unit1, unit2):
     param unit2: unit to be converted to
     returns    : param d converted from unit1 to unit2
     """
-    
+    units = {'meter':1, 'inch':0.0254, 'foot':0.3048}
+    if units[unit1] > units[unit2]:
+        return d*(units[unit1]/units[unit2])
+    else:
+        return d*(units[unit2]/units[unit1])
 
-
+def logistic(N):
+    """
+    param N : list 
+    returns : logistic map for N
+    """
+    prevY = 0.5
+    logistic_map = [0.5]
+    for _ in range(N):
+        newY = ((11/3.0)*prevY)*(1 - prevY)
+        logistic_map.append(newY)
+        prevY = newY
+    return logistic_map
+        
+        
 
