@@ -3,18 +3,16 @@ from math import sqrt, pow
 
 
 def trapez(f, a, b, n):
-    """
-
-    :param f:
-    :param a:
-    :param b:
-    :param n:
-    :return: composite trapezoidal integration rule applied on f between limits a and b
-    """
-    a, b = float(a), float(b)
-    h = (b - a)/float(n)
-    big_summation = sum([f(a + i*h) for i in range(1, n)])
-    return (h/2.0)*(f(a) + f(b) + 2.0*big_summation)
+    """Approximates and returns the definite integral of f from a to b by
+    the composite trapezoidal rule, using n subintervals"""
+    aprime = float(a)
+    bprime = float(b)
+    nprime = float(n)
+    h = (bprime - aprime) / nprime
+    s = f(aprime) + f(bprime)
+    for i in range(1, n):
+        s += 2 * f(aprime + i * h)
+    return s * h / 2.0
 
 
 def xint(a, b):
@@ -59,3 +57,6 @@ def std_dev(x):
 
 if __name__ == '__main__':
     print(finderror(5))
+    print(using_quad())
+    print(std_dev([1.0, 1.0]))
+    print(std_dev([1.0, 2.0]))
