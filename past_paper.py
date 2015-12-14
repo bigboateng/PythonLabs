@@ -94,6 +94,34 @@ def logistic(N):
         logistic_map.append(newY)
         prevY = newY
     return logistic_map
-        
-        
 
+
+def create_f(xn, fn):
+    """
+    param xn: values of x
+    paran fn: values of f(x)
+    returns : function f(x) that interpolates the value of f for any position x
+    """
+    import scipy.interpolate as s
+    import numpy as np
+    return (lambda x: np.array(s.spline(xn, fn, x, 2)))
+        
+def max_f(f, x0):
+    """
+    param f : function f(x)
+    param x0: intial value for downhill algorithm
+    """
+    import scipy.optimize as sc
+    return sc.fmin((lambda x: -f(x)), x0)
+
+
+def find_max():
+    """
+    returns: pos x of maximum of given function
+    """
+    from math import pi
+    x = [0, pi/6, pi/3, pi/2, 2*pi/3, 5*pi/6, pi]
+    y = [1, 1.15, 1.98, 14.134, 1.98, 1.15, 1]
+    func = create_f(x, y)
+    return max_f(func, pi/2)
+    
