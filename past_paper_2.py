@@ -65,19 +65,17 @@ def read(filename):
 
 def isfib(F):
     """
-    param F: list of numbers
-    returns: true if F is a fib sequence or false otherwise
+    param F: list of numbers that might be a fibonacci sequence
+    returns: true if F is a fib sequence, otherwise false
     """
-    print("Length of f is %d" %len(F))
-    if len(F) > 2:
-        if F[len(F)-1] is (F[len(F)-2] + F[len(F)-3]):
-            print(F)
-            isfib(F[:-1])
+    lenF = len(F)
+    if lenF > 2:
+        if F[lenF-1] == (F[lenF-2] + F[lenF - 3]):
+            return isfib(F[:-1])
         else:
             return False
     else:
         return True
-        print("True")
 
 def f_from_data(xs, ys):
     """
@@ -87,5 +85,17 @@ def f_from_data(xs, ys):
               an estimate for y(x)
     """
     import scipy.interpolate as sc
-    return (lambda x: float(sc.spline(xk=xs,yk=ys,xnew=x, order=1)))
+    f = sc.interp1d(xs, ys)
+    return (lambda x: float(f(x)))
+
+def root(xs, ys):
+    """
+    param xs: list of x positions
+    param ys: list of f(x) positions
+    returns : value x for which y(x) is zero
+    """
+    from scipy.optimize import brentq
+    func = f_from_data(xs, ys)
+    return brentq(func, xs[0], xs[-1])
+    
     
