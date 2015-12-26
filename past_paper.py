@@ -30,6 +30,10 @@ def capitalise_names(name_list):
         nameAsList[0] = first_letter
         return_names.append("".join(nameAsList))
     return return_names
+
+def capitalize_names_2(names):
+    r = [name[0].capitalize()+"".join(list(name[1:])) for name in names]
+    return r
         
 def count(s, chars):
     """"
@@ -40,10 +44,7 @@ def count(s, chars):
     dictionary = {k:0 for k in chars}
     for char in s:
         if char in chars:
-            if char in dictionary:
-                dictionary[char] += 1
-            else:
-                dictionary[char] = 1
+            dictionary[char] += 1
     return dictionary
 
 
