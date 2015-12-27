@@ -100,6 +100,7 @@ def T_iteration(n):
         results.append(currentT)
     return results
 
+# THIS LAST DOES NOT WORK...YET
 def T_error(n):
     """
     param n: integer
