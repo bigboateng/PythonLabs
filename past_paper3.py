@@ -3,7 +3,9 @@ def average_age(people):
     param people: list of tuples (name, age)
     returns     : return average age of people
     """
-    return sum(p[1] for p in people) / len(people)
+    #I used list comprehension to make a list then used sum() function
+    # to add them so for eg. sum([1,2,3]) = 6
+    return sum([p[1] for p in people]) / len(people)
 
 def rectangle(p1, p2):
     """
@@ -23,6 +25,8 @@ def word_count(s):
     param s: words
     returns: number of words in string
     """
+    # code looks short but if you split anything, you get a list
+    # so its basically like doing stringList = s.split(" "), return length ofstringList
     return len(s.split(" "))
 
 
@@ -31,6 +35,8 @@ def long_word(s):
     param s: sentence
     returns: longest word in list
     """
+    #There are many ways of doing this, I used replace() function in the end
+    # type 'help(''.replace)' in the command thing to get 
     wordsAsList = s.split(' ')
     longestWord = wordsAsList[0]    
     for word in wordsAsList:
