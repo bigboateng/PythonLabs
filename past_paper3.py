@@ -50,7 +50,7 @@ def shift(a):
     returns: list contsains same elements as a
              but positions have been shifted by 1 
     """
-    return [a[-1]]+ [a[i] for i in range(len(a)-1)]
+    return a[-1]+ a[:-1]
 
 def rotate(a, n):
     """
@@ -107,20 +107,22 @@ def T_iteration(n):
     return results
 
 # THIS LAST DOES NOT WORK...YET
+# print("size of exact sols = %d" %len(exact_solutions))
+# print("size of approx sols = %d" %len(approx_solutions))
 def T_error(n):
     """
     param n: integer
     returns: error between approximate solution and exact solution
     """
     from math import exp
-    exact_equation = lambda t: (exp(-2*t)+exp(-t))/2
+    exact_equation = lambda t: (exp(-2*t)+exp(-t))/2.0
     approx_solutions = T_iteration(n)
-    exact_solutions = [exact_equation(n) for n in range(n+1)]
-    print("size of exact sols = %d" %len(exact_solutions))
-    print("size of approx sols = %d" %len(approx_solutions))
-    error = [i-j for i,j in zip(approx_solutions, exact_solutions)]
-    print("Approx \t\t\t Exact \t\t\t Error")
-    for i,j in zip(exact_solutions, approx_solutions):
-        print("{} \t {} \t {}".format(i,j,j-i))
-    #return max(error)
+    exact_solutions = []
+    for i in range(n+1):
+        Ti = i/n
+        exact_solutions.append(exact_equation(Ti))
+    print("Size of approx is {}".format(len(approx_solutions)))
+    print("Size of exact is {}".format(len(exact_solutions)))
+    error = [j-i for i,j in zip(approx_solutions, exact_solutions)]
+    return max(error)
     
