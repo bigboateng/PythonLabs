@@ -81,7 +81,7 @@ def change_unit(d, unit1, unit2):
     if units[unit1] > units[unit2]:
         return d*(units[unit1]/units[unit2])
     else:
-        return d*(units[unit2]/units[unit1])
+        return d/(units[unit2]/units[unit1])
 
 def logistic(N):
     """

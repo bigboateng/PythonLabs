@@ -121,8 +121,6 @@ def T_error(n):
     for i in range(n+1):
         Ti = i/n
         exact_solutions.append(exact_equation(Ti))
-    print("Size of approx is {}".format(len(approx_solutions)))
-    print("Size of exact is {}".format(len(exact_solutions)))
-    error = [j-i for i,j in zip(approx_solutions, exact_solutions)]
+    error = [abs(j-i) for i,j in zip(approx_solutions, exact_solutions)]
     return max(error)
     
