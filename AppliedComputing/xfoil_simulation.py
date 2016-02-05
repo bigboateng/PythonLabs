@@ -17,3 +17,5 @@ def run_command():
     """
     os.system(run_xfoil_command)
 
+def run_xfoil(file_path, x_foil_path):
+    pass

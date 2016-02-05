@@ -26,7 +26,7 @@ class Bezier:
         #print("len of x is %d" %len(lin_bez[:,0]))
         #print("len of y is %d" %len(lin_bez[:, 1]))
         pylab.plot(t_points[:,0],t_points[:,1])
-        pylab.show()
+        #pylab.show()
 
     def bez_quadra(self):
         """
@@ -68,7 +68,7 @@ class Bezier:
             t_values[i] = sum([self.choose(n, x)*((1-t[i])**(n-x))*(t[i]**x)*points[x] for x in range(n+1)])
             print(t_values[i])
         pylab.plot(t_values[:,0], t_values[:,1])
-        pylab.show()
+        #pylab.show()
 
 
     def rational_bezier(self, points, weights):
@@ -86,7 +86,8 @@ class Bezier:
             bot = sum([self.choose(n, x)*((1-t[i])**(n-x))*(t[i]**x)*weights[x] for x in range(n+1)])
             t_values[i] = (top/bot)
         #print(t_values)
-        pylab.plot(t_values[:,0], t_values[:,1], 'ro')
+        #pylab.plot(t_values[:,0], t_values[:,1], 'ro')
+        return t_values
 
     def bezier_spline_aerofoil(self, file_path=None):
         """
@@ -106,9 +107,19 @@ class Bezier:
         p = np.vstack((spline_intersect, p))
         pylab.plot(p[:,0],p[:,1])
         pylab.plot(q[:,0],q[:,1])
-        self.rational_bezier(q, q_w)
-        self.rational_bezier(p,p_w)
+        p_points = self.rational_bezier(q, q_w)
+        q_points = self.rational_bezier(p,p_w)
+        pylab.plot(p_points[:,0], p_points[:,1], 'ro')
+        pylab.plot(q_points[:,0], q_points[:,1], 'ro')
         pylab.plot(spline_intersect[0], spline_intersect[1], 'ro')
+        # writing the data into the aeofoil.dat file
+        with open('AppliedComputing/aerofoil.dat', 'w') as f:
+            for point in np.vstack((p_points, q_points)):
+                f.write(str(point[0]) + '\t' + str(point[1]) + '\n')
+
+
+
+    def show_plot(self):
         pylab.show()
 
 
@@ -119,6 +130,8 @@ class Bezier:
 if __name__ == '__main__':
     b = Bezier()
     b.bezier_spline_aerofoil()
+    #b.show_plot()
+
     #bez_linear(1,1)
     #bez_quadra()
     #print(choose(5,2))
