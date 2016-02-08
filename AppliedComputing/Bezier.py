@@ -114,8 +114,9 @@ class Bezier:
         pylab.plot(spline_intersect[0], spline_intersect[1], 'ro')
         # writing the data into the aeofoil.dat file
         with open('AppliedComputing/aerofoil.dat', 'w') as f:
+            f.write("Aerofoil Test\n")
             for point in np.vstack((p_points, q_points)):
-                f.write(str(point[0]) + '\t' + str(point[1]) + '\n')
+                f.write(str(point[0]) + ' ' + str(point[1]) + '\n')
 
 
 

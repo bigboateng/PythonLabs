@@ -1,11 +1,13 @@
-load /Users/Boateng/Documents/uni_python/AppliedComputing/aerofoil.dat
+load /Users/Boateng/Desktop/aero.dat
 panel
 oper
 visc 1397535
 M 0.1
 type 1
 pacc
-/Users/Boateng/Documents/uni_python/AppliedComputing/polar.dat
+/Users/Boateng/Documents/uni_python/AppliedComputing/polar_save_name.dat
+n
+
 iter 5000
 cl 1.2
 quit

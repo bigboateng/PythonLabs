@@ -3,11 +3,11 @@ import os
 
 
 # xfoil path on mac os x
-xfoil_path = '/Applications/Xfoil.app/Contents/Resources/xfoil'
+xfoil_path = '/Users/Boateng/Desktop/xfoil/bin/xfoil'
 # dont really need this as python works from within this folder
 directory_path = '/AppliedComputing'
 # running xfoil from python
-run_xfoil_command = xfoil_path + 'XfoilP4 < AppliedComputing/commands.in'
+run_xfoil_command = xfoil_path + ' < /Users/Boateng/Documents/uni_python/AppliedComputing/commands.in'
 
 
 def run_command():
@@ -19,3 +19,6 @@ def run_command():
 
 def run_xfoil(file_path, x_foil_path):
     pass
+
+if __name__ == '__main__':
+    run_command()
